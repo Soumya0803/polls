@@ -6,6 +6,9 @@
 
 </head>
 <body>
+    <h1>Polls</h1>
+    <a href="{% url 'polls:add_polls' %}">Add New Polls</a>
+    <h1>Active Polls</h1>
     {% if latest_question_list %}
     <ul>
         {% for question in latest_question_list %}
@@ -15,6 +18,10 @@
     {% else %}
     <p>No polls are available.</p>
     {% endif %}
+    <br>
+   
+
+
 </body>
 
 </html>
