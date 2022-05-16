@@ -46,7 +46,7 @@ def vote(request, question_id):
 def get_polls(request):
 
         form = PollsForm(request.POST)
-        ChoiceFormSet = inlineformset_factory(Question, Choice, form= ChoiceForm,fields=('choice_text',),extra=7,min_num=3,max_num=10)
+        ChoiceFormSet = inlineformset_factory(Question, Choice, form= ChoiceForm,fields=('choice_text',),extra=7,min_num=3,max_num=10,can_delete=False,)
         choiceformset = ChoiceFormSet()
         
         # check whether it's valid:
@@ -61,7 +61,7 @@ def get_polls(request):
             choiceformset = ChoiceFormSet(request.POST,instance=ques)
 
         if  choiceformset.is_valid():
-            print('flag')
+            
             choice_form=choiceformset.save()
             return redirect('polls:index')
 
